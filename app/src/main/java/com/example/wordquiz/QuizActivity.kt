@@ -1,21 +1,28 @@
 package com.example.wordquiz
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wordquiz.R.color
+import com.example.wordquiz.R.drawable.buttonbackground
 import com.example.wordquiz.WordBook.favWordList
 import com.example.wordquiz.WordBook.nowAddWordList
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_quiz.*
 import kotlinx.android.synthetic.main.row.view.*
+import org.jetbrains.anko.backgroundColor
+import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import java.util.*
@@ -27,7 +34,7 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
 
 
     var words= mutableListOf<Word>()
-    lateinit var adapter: MyAdapter
+    lateinit var adapter: QuizAdapter
     lateinit var tts:TextToSpeech
     var isTTSready=false
     var wordIndex=0
@@ -114,7 +121,7 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
 
             val ansIndex=(0..4).random()
             quizWord.text=arr[ansIndex].eng
-            adapter= MyAdapter(arr)
+            adapter= QuizAdapter(arr)
             wordRecyclerView.adapter=adapter
             wordIndex+=5
             setupAdapterListener(ansIndex)
@@ -123,7 +130,7 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
 
             quizWord.visibility=View.GONE
 
-            inningTxt.text="이닝\n$nowInning/$totalInning"
+            inningTxt.text="$nowInning/$totalInning"
             nowInning++
 
         }
@@ -133,22 +140,25 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
 
     private fun setupAdapterListener(ansIndex:Int){
         var checked=false
-        adapter.itemListener=object:MyAdapter.OnItemListener{
+        adapter.itemListener=object:QuizAdapter.OnItemListener{
             override fun OnItemClick(
-                holder: MyAdapter.MyViewHolder,
+                holder: QuizAdapter.QuizViewHolder,
                 view: View,
-                wordTxtView: TextView,
+                wordTxtView: TextView, //여기서 view는
                 position: Int
             ) { //클릭 이벤트 처리
-                for(i in 0..4){
-                    wordRecyclerView[i].candidateWords.text=arr[i].eng+" : "+arr[i].kor
-                    wordRecyclerView[i].favCheck.visibility=View.VISIBLE
-                }
-                nextQuizBtn.isEnabled=true
-
+                Log.d("dbdb",wordTxtView.text.toString()+","+wordTxtView.javaClass.toString())
                 if(checked==false ){//문제가 클릭되었는지
-                    if(ansIndex==position){
-                        view.setBackgroundColor(Color.GREEN)
+
+                    for(i in 0..4){
+                        wordRecyclerView[i].candidateWords.text=arr[i].eng+" : "+arr[i].kor
+                        wordRecyclerView[i].favCheck.visibility=View.VISIBLE
+                    }
+                    nextQuizBtn.isEnabled=true
+                    if(ansIndex==position){ //정답인 경우
+                        wordTxtView.backgroundDrawable=getDrawable(R.drawable.answordbg)
+                        wordTxtView.setTextColor(resources.getColor(R.color.mywhite))
+
                         if(watchedWord)
                             totalSocre++
                         else
@@ -156,14 +166,21 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
                     }
 //                    tts.speak(data,TextToSpeech.QUEUE_FLUSH,null,null)
                     else{ //틀렸을 때
-                        view.setBackgroundColor(Color.RED)
-                        wordRecyclerView[ansIndex].setBackgroundColor(Color.GREEN)
+                        view.backgroundDrawable=getDrawable(R.drawable.buttonbackground)
+
+                        wordTxtView.backgroundDrawable=getDrawable(R.drawable.wrongwordbg)
+                        wordTxtView.setTextColor(resources.getColor(R.color.mywhite))
+
+                        wordRecyclerView[ansIndex].candidateWords.setTextColor(resources.getColor(R.color.mywhite))
+                        wordRecyclerView[ansIndex].candidateWords.backgroundDrawable=getDrawable(R.drawable.answordbg)
                         favWordList.add(arr[position])
                         nowAddWordList.add(arr[position])
                         wordRecyclerView[position].favCheck.isChecked=checked
                         wordRecyclerView[position].favCheck.isEnabled=false
                     }
 
+                 //   wordTxtView.backgroundDrawable=getDrawable(R.drawable.ansbtn)
+                 //   wordRecyclerView[ansIndex].candidateWords.backgroundDrawable=getDrawable(R.drawable.ansbtn)
                     //    data.text=arr[position].eng+" : "+arr[position].kor
                     checked=true
              //       inningTxt.text="이닝\n$nowInning/$totalInning"
@@ -191,6 +208,10 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
                quizWord.visibility=View.VISIBLE
                watchedWord=true
                //TODO(이거 클릭되면 점수 1점으로 바뀌는 거)
+           }
+           R.id.quizhelpbtn->{
+               val inflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+               val view=inflater.inflate(R.layout.,null)
            }
        }
     }
