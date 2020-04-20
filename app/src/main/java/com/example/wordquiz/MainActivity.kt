@@ -16,12 +16,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
-
+//메인 엑티비티
     var words= mutableListOf<Word>()
     var candidates= mutableListOf<Word>()
 
     var array=ArrayList<String>()
-    lateinit var adapter: MyAdapter
+    lateinit var adapter: QuizAdapter
     lateinit var tts:TextToSpeech
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         questionCntDownBtn.setOnClickListener(this)
         questionCntUpBtn.setOnClickListener(this)
         favBtn.setOnClickListener(this)
-        addBtn.setOnClickListener(this)
+        infoBtn.setOnClickListener(this)
     }
     override fun onClick(v: View?) {
         when(v?.id){
@@ -56,7 +56,15 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                     toast("값 범위 (1~20)")
             }
         //    R.id.questionCntTxt->{ }
-            R.id.addBtn->{ }
+            R.id.infoBtn->{
+                toast("""
+                    건국대학교
+                    공과대학
+                    컴퓨터공학부 
+                    201411194 김대엽
+                    daeyab@naver.com
+                """.trimIndent())
+            }
             R.id.startBtn->{
                 startActivity<QuizActivity>(
                     "cnt" to questionCntTxt.text.toString().toInt()
