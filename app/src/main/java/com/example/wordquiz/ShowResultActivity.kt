@@ -17,16 +17,15 @@ class ShowResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_result)
-//        android:text=" 8점 / 15점"
         val perfectScore=(intent.getIntExtra("totalInning",0)*2).toString()
         val totalScore=intent.getIntExtra("totalScore",0).toString()
-//        val nowAddList=intent.getParcelableArrayListExtra<Word>("FavAddList","")
+        val totalCorrected=intent.getIntExtra("totalCorrected",0).toString()
+
         resultscore.text="$totalScore 점 / $perfectScore 점"
+        resultCorrected.text="${perfectScore.toInt()/2} 문제 중 $totalCorrected 정답"
 
         init()
-        toMainBtn.setOnClickListener {
-            startActivity<MainActivity>()
-        }
+
 
     }
 
@@ -36,6 +35,9 @@ class ShowResultActivity : AppCompatActivity() {
         favRecyclerView.adapter=adapter //어답터 부착
         swipeActions()
         resultAddTxt.text="즐겨찾기 추가 (${nowAddWordList.size})"
+        toMainBtn.setOnClickListener {
+            startActivity<MainActivity>()
+        }
     }
 
     private fun swipeActions() {

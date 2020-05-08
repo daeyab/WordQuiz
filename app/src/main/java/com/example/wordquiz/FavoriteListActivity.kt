@@ -2,16 +2,20 @@ package com.example.wordquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordquiz.WordBook.favWordList
 import kotlinx.android.synthetic.main.activity_favorite_list.*
+import kotlinx.android.synthetic.main.activity_quiz.*
 import kotlinx.android.synthetic.main.activity_show_result.*
 import kotlinx.android.synthetic.main.activity_show_result.favRecyclerView
 import kotlinx.android.synthetic.main.activity_show_result.toMainBtn
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
-class FavoriteListActivity : AppCompatActivity() {
+class FavoriteListActivity : AppCompatActivity(),View.OnClickListener {
 
     lateinit var adapter: FavAdapter
 
@@ -19,9 +23,6 @@ class FavoriteListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_list)
         init()
-        toMainBtn.setOnClickListener {
-            startActivity<MainActivity>()
-        }
 
     }
 
@@ -32,6 +33,28 @@ class FavoriteListActivity : AppCompatActivity() {
         swipeActions()
 
         favListTxt.text="즐겨찾기 목록 (${WordBook.favWordList.size})"
+        favdeleteBtn.setOnClickListener(this)
+        favquestionBtn.setOnClickListener(this)
+        favtoMainBtn.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.favdeleteBtn->{
+                favWordList.clear()
+                toast("즐겨찾기 목록이 삭제되었습니다")
+                startActivity<MainActivity>()
+            }
+            R.id.favquestionBtn->{
+                toast("""
+                    [삭제] : 우로 밀기
+                    [보기] : 클릭
+                """.trimIndent())
+            }
+            R.id.favtoMainBtn->{
+                startActivity<MainActivity>()
+            }
+        }
     }
 
     private fun swipeActions() {

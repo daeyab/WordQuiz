@@ -1,5 +1,6 @@
 package com.example.wordquiz
 
+import android.content.Context
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,28 +13,23 @@ import com.example.wordquiz.WordBook.favWordList
 import com.example.wordquiz.WordBook.nowAddWordList
 import kotlinx.android.synthetic.main.row.view.*
 
-class MyAdapter(val candidates:MutableList<Word>)
-    :RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
+class QuizAdapter(val candidates:MutableList<Word>)
+    :RecyclerView.Adapter<QuizAdapter.QuizViewHolder>(){
 
     interface OnItemListener{
         fun OnItemClick(
-            holder:MyViewHolder,
+            holder:QuizViewHolder,
             view:View,
             txtView:TextView,
             position: Int)
 
     }
     var itemListener:OnItemListener?=null
-    var wordClicked=false
 
-    inner class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+    inner class QuizViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
 
-        val item=itemView
         val meaningtxt = itemView.findViewById<TextView>(R.id.candidateWords)
-        val favChecked = itemView.findViewById<CheckBox>(R.id.favCheck)
-
         init {
-            var checked=false
             itemView.setOnClickListener {
                 Log.d("dbdb",itemView.javaClass.toString())
                   itemListener?.OnItemClick(
@@ -50,38 +46,33 @@ class MyAdapter(val candidates:MutableList<Word>)
                 val w=Word(wordArr[0],wordArr[1])
                 if(isChecked){
                     Log.d("dbdb",w.toString()+"추가")
-                    favWordList.add(w)
                     nowAddWordList.add(w)
                 }
                 else{
                     Log.d("dbdb",w.toString()+"삭제")
-                    favWordList.remove(w)
                     nowAddWordList.remove(w)
                 }
             }
-            }
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            : MyViewHolder{
+            : QuizViewHolder{
         val v=LayoutInflater
             .from(parent.context)
             .inflate(R.layout.row,parent,false)
-        return MyViewHolder(v)
+        return QuizViewHolder(v)
     }
 
     override fun getItemCount(): Int { //보여지는 거 갯수 출력
         return candidates.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder,position:Int){
+    override fun onBindViewHolder(holder: QuizViewHolder,position:Int){
         holder.meaningtxt.text=candidates[position].kor //한국말 출력부분
-      //  holder.favChecked.setBackgroundColor(Color.CYAN) //한국말 출력부분
+        holder.meaningtxt.setBackgroundResource(R.drawable.wordbackground)
     }
 
-    fun setFavWords() {
-    //    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 
 }
