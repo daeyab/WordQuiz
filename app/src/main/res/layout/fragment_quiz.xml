@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="퀴즈 시작"
+            android:textStyle="bold"
+            android:background="@color/mylightgray"
+            android:paddingBottom="40dp"
+            android:fontFamily="@font/myfont"
+            android:textAlignment="center"
+            android:textSize="40sp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            style="@style/myLayoutStyle">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/myfont"
+                android:id="@+id/quizNumTxt"
+                android:textSize="24sp"
+                android:text="문제 수 : 문제 "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/myfont"
+                android:id="@+id/quizTypeTxt"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:text="문제 유형 : ㅁㄴㅇㄴㅁ "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/myfont"
+                android:id="@+id/gotoSettingTxt"
+                android:textSize="18sp"
+                android:layout_margin="20dp"
+                android:textAlignment="center"
+                android:textColor="#8C8C8C"
+                android:text="@string/gotoSetting"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="70dp"
+                android:text="퀴즈 시작"
+                android:id="@+id/quizStartBtn"
+                android:fontFamily="@font/myfont"
+                android:background="@drawable/buttonbackground"
+                android:textSize="28sp"
+                android:backgroundTint="@color/mygray"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

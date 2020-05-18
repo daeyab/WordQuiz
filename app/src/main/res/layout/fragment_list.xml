@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="30dp"
+            android:background="@color/mylightgray"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/searchWordBtn"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_search"
+                android:tint="#000000" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="단어 목록"
+                android:textStyle="bold"
+                android:id="@+id/wordListTxt"
+                android:gravity="center"
+                android:background="@color/mylightgray"
+                android:fontFamily="@font/myfont"
+                android:textAlignment="center"
+                android:textSize="40sp"/>
+
+            <ImageButton
+                android:id="@+id/deleteWordBtn"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_delete"
+                android:tint="#000000" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:fontFamily="@font/myfont"
+            android:padding="10dp"
+            android:id="@+id/searchWordTxt"
+            android:visibility="gone"
+            android:textAlignment="center"
+            android:hint="검색할 단어를 입력하세요"
+            android:layout_marginBottom="5dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/wordListRecyclerView"
+            android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

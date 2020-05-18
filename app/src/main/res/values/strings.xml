@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WordQuiz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gotoSetting"><u>설정으로 바로가기</u></string>
 </resources>

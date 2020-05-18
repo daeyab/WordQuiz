@@ -5,14 +5,13 @@ import android.os.Bundle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wordquiz.WordBook.favWordList
 import com.example.wordquiz.WordBook.nowAddWordList
 import kotlinx.android.synthetic.main.activity_show_result.*
 import org.jetbrains.anko.startActivity
 
 class ShowResultActivity : AppCompatActivity() {
 
-    lateinit var adapter: FavAdapter
+    lateinit var adapter: WordAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +30,12 @@ class ShowResultActivity : AppCompatActivity() {
 
     private fun init() {
         setViewLayout() //레이아웃 설정
-        adapter= FavAdapter(nowAddWordList) //어답터 설정
+        adapter= WordAdapter(nowAddWordList) //어답터 설정
         favRecyclerView.adapter=adapter //어답터 부착
         swipeActions()
         resultAddTxt.text="즐겨찾기 추가 (${nowAddWordList.size})"
         toMainBtn.setOnClickListener {
-            startActivity<MainActivity>()
+            startActivity<LaunchActivity>()
         }
     }
 

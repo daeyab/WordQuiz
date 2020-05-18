@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/myLayoutStyle"
+    tools:context=".LaunchActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="800dp"
+    android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/topImg"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/head_logo"
+            android:gravity="center"/>
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:padding="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
+
+    <RadioGroup
+        android:background="@color/tabgray"
+        android:layout_width="match_parent"
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_height="50dp">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:padding="7dp"
+            android:id="@+id/QuizRBtn"
+            android:drawableBottom="@drawable/quiz_icon"/>
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:padding="7dp"
+            android:id="@+id/ListRBtn"
+            android:drawableBottom="@drawable/list_icon"/>
+
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:padding="7dp"
+            android:id="@+id/AddRBtn"
+            android:drawableBottom="@drawable/add_icon"/>
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:padding="7dp"
+            android:id="@+id/FavRBtn"
+            android:drawableBottom="@drawable/favorite_icon"/>
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:padding="7dp"
+            android:id="@+id/SettingRBtn"
+            android:drawableBottom="@drawable/settings_icon"/>
+
+
+    </RadioGroup>
+</LinearLayout>

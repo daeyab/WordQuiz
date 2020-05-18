@@ -8,16 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordquiz.WordBook.favWordList
 import kotlinx.android.synthetic.main.activity_favorite_list.*
-import kotlinx.android.synthetic.main.activity_quiz.*
-import kotlinx.android.synthetic.main.activity_show_result.*
 import kotlinx.android.synthetic.main.activity_show_result.favRecyclerView
-import kotlinx.android.synthetic.main.activity_show_result.toMainBtn
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class FavoriteListActivity : AppCompatActivity(),View.OnClickListener {
 
-    lateinit var adapter: FavAdapter
+    lateinit var adapter: WordAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,33 +25,33 @@ class FavoriteListActivity : AppCompatActivity(),View.OnClickListener {
 
     private fun init() {
         setViewLayout() //레이아웃 설정
-        adapter= FavAdapter(WordBook.favWordList) //어답터 설정
+        adapter= WordAdapter(WordBook.favWordList) //어답터 설정
         favRecyclerView.adapter=adapter //어답터 부착
         swipeActions()
 
-        favListTxt.text="즐겨찾기 목록 (${WordBook.favWordList.size})"
-        favdeleteBtn.setOnClickListener(this)
-        favquestionBtn.setOnClickListener(this)
-        favtoMainBtn.setOnClickListener(this)
+     //   favListTxt.text="즐겨찾기 목록 (${WordBook.favWordList.size})"
+    //    favdeleteBtn.setOnClickListener(this)
+     //   favquestionBtn.setOnClickListener(this)
+      //  favtoMainBtn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.favdeleteBtn->{
-                favWordList.clear()
-                toast("즐겨찾기 목록이 삭제되었습니다")
-                startActivity<MainActivity>()
-            }
-            R.id.favquestionBtn->{
-                toast("""
-                    [삭제] : 우로 밀기
-                    [보기] : 클릭
-                """.trimIndent())
-            }
-            R.id.favtoMainBtn->{
-                startActivity<MainActivity>()
-            }
-        }
+    //    when(v?.id){
+  //          R.id.favdeleteBtn->{
+       //         favWordList.clear()
+      //          toast("즐겨찾기 목록이 삭제되었습니다")
+     //           startActivity<MainActivity>()
+          //  }
+     //       R.id.favquestionBtn->{
+        //        toast("""
+         //           [삭제] : 우로 밀기
+          //          [보기] : 클릭
+           //     """.trimIndent())
+          //  }
+          //  R.id.favtoMainBtn->{
+           //     startActivity<MainActivity>()
+          //  }
+       // }
     }
 
     private fun swipeActions() {
@@ -66,26 +63,25 @@ class FavoriteListActivity : AppCompatActivity(),View.OnClickListener {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                adapter.moveItem(viewHolder.adapterPosition,target.adapterPosition)
+      //          adapter.moveItem(viewHolder.adapterPosition,target.adapterPosition)
                 return true
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    adapter.removeItem(viewHolder.adapterPosition)
-                    favListTxt.text="즐겨찾기 목록 (${WordBook.favWordList.size})"
+         //           adapter.removeItem(viewHolder.adapterPosition)
+     //               favListTxt.text="즐겨찾기 목록 (${WordBook.favWordList.size})"
             }
         }
         val itemTouchHelper= ItemTouchHelper(simpleCallback)
-        itemTouchHelper.attachToRecyclerView(favRecyclerView)
+  //      itemTouchHelper.attachToRecyclerView(favRecyclerView)
         //부착
     }
 
     private fun setViewLayout() { //뷰레이아웃설정
-        favRecyclerView.layoutManager= LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
+    //    favRecyclerView.layoutManager= LinearLayoutManager(
+ //           this,
+        //    LinearLayoutManager.VERTICAL,
+     ////       false
+    //    )
     }
-
 }

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fav_row.view.*
 
-class FavAdapter(val lst:MutableList<Word>) : RecyclerView.Adapter<FavAdapter.FavViewHolder>() {
+class WordAdapter(val lst:MutableList<Word>) : RecyclerView.Adapter<WordAdapter.FavViewHolder>() {
     //1.먼저상속
     //2.뷰홀더 생성 -> 넣어주고 뒤에 () 통해 호출
 
@@ -55,7 +55,14 @@ class FavAdapter(val lst:MutableList<Word>) : RecyclerView.Adapter<FavAdapter.Fa
     } //이건 아예 똑같은듯
 
     override fun onBindViewHolder(holder: FavViewHolder, position: Int) {
-        holder.korTxt.text=lst[position].kor
+        if(holder.korTxt.visibility== View.VISIBLE){
+            holder.korTxt.visibility=View.GONE
+        }
+        else{
+            holder.korTxt.visibility== View.VISIBLE
+            holder.korTxt.text=lst[position].kor+"!"
+        }
+
         holder.engTxt.text=lst[position].eng
     }
 

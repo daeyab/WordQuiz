@@ -6,23 +6,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.wordquiz.WordBook.favWordList
 import com.example.wordquiz.WordBook.wordList
-import kotlinx.android.synthetic.main.activity_favorite_list.*
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.activity_quiz.*
-import kotlinx.android.synthetic.main.activity_show_result.*
-import kotlinx.android.synthetic.main.activity_show_result.favRecyclerView
-import kotlinx.android.synthetic.main.activity_show_result.toMainBtn
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 
 class ListActivity : AppCompatActivity(),View.OnClickListener {
 
-    lateinit var adapter: FavAdapter
+    lateinit var adapter: WordAdapter
     var txtvisible=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +25,7 @@ class ListActivity : AppCompatActivity(),View.OnClickListener {
     private fun init() {
         wordList.sortBy { word->word.eng } //단어 정렬
         setViewLayout() //레이아웃 설정
-        adapter= FavAdapter(WordBook.wordList) //어답터 설정
+        adapter= WordAdapter(WordBook.wordList) //어답터 설정
         wordListRecyclerView.adapter=adapter //어답터 부착
         wordListTxt.text="단어 목록 (${WordBook.wordList.size})"
         addWordBtn.setOnClickListener(this)
@@ -49,7 +39,7 @@ class ListActivity : AppCompatActivity(),View.OnClickListener {
                     if(w.eng.contains(txt))
                         searchedList.add(w)
                 }
-                adapter=FavAdapter(searchedList)
+                adapter=WordAdapter(searchedList)
                 wordListRecyclerView.adapter=adapter //어답터 부착
                 wordListTxt.text="단어 목록 (${searchedList.size})"
 

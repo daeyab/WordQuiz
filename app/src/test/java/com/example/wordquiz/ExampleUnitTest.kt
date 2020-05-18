@@ -10,25 +10,33 @@ import java.util.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-data class word(val eng:String, val num:Int){}
+data class word(var eng:String, var num:String){}
 
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        val cards= mutableListOf<word>()
-        cards.add(word("a",1))
-        cards.add(word("b",2))
-        cards.add(word("c",3))
-        cards.add(word("d",4))
-        cards.add(word("e",5))
 
-        Collections.shuffle(cards)
+
+        val str="sa"
+        val a=str.split("/ ")
+        println(a)
+        val cards = mutableListOf<word>()
+        cards.add(word("a", "1"))
+//        val w = word("a", "2")
+
+        fun addit(w: word) {
+            for (i in 0..cards.size-1) {
+                if(w.eng == cards[i].eng){
+                    cards[i].num += "/${w.num}"
+                    return
+                }
+            }
+            cards.add(w)
+        }
+        addit(word("b", "2"))
+        addit(word("a", "2"))
+
         println(cards)
-        val col=cards.subList(1,3);
-        println(col);
-
-        for(i in 1..100)
-            println((0..5).random())
     }
 
 }

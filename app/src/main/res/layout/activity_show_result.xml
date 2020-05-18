@@ -3,41 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/mylightgray"
     android:padding="15dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ShowResultActivity">
+    tools:context=".QuizActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/head_logo_2"
+                android:gravity="center"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="WORD QUIZ"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:gravity="center"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" 8점 / 15점"
+        android:text="점수/전체"
+        android:fontFamily="@font/myfont"
         android:id="@+id/resultscore"
-        android:textColor="#A5D6A7"
+        android:textColor="@color/myblue"
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_margin="10dp"
-        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="정답/전체"
+        android:fontFamily="@font/myfont"
+        android:id="@+id/resultCorrected"
+        android:textColor="@color/myred"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:gravity="center"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="즐겨찾기 추가"
+        android:fontFamily="@font/myfont"
         android:id="@+id/resultAddTxt"
         android:textSize="30sp"
+        android:textColor="@color/mydarkblack"
         android:textStyle="bold"
         android:padding="15dp"
         android:layout_margin="10dp"
@@ -46,14 +63,23 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/buttonbackground"
         android:id="@+id/favRecyclerView"
         android:layout_weight="1">
 
     </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/myfont"
         android:text="확인"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:backgroundTint="@color/mydarkgray"
+        android:background="@drawable/buttonbackground"
         android:id="@+id/toMainBtn"
         android:layout_gravity="center"/>
 </LinearLayout>

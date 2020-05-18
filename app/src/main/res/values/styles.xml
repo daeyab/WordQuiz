@@ -8,5 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
       </style>
 
+    <style name="myLayoutStyle">
+        <item name="android:background">@color/mylightgray</item>
+        <item name="android:orientation">vertical</item>
+    </style>
 
 </resources>

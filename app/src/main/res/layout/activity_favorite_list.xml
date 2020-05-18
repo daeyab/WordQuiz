@@ -4,52 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="15dp"
+    android:background="@color/mylightgray"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".FavoriteListActivity">
 
-
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="WORD QUIZ"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:padding="10dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
         android:gravity="center"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="즐겨찾기 목록"
-        android:id="@+id/favListTxt"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:padding="15dp"
-        android:layout_margin="10dp"
-        android:gravity="center"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="삭제 : 우로 슬라이드"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:padding="10dp"
-        android:gravity="center"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:text="단어 안보고 맞추면 +2
+\n단어를 보고 맞추면 +1
+\n다시듣기는 무제한"
+            android:tint="#000000" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="즐겨찾기 목록"
+            android:textColor="@color/mydarkblack"
+            android:fontFamily="@font/myfont"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:gravity="center"/>
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@color/transparent"
+            android:src="@android:drawable/ic_menu_help"
+            android:text="단어 안보고 맞추면 +2
+\n단어를 보고 맞추면 +1
+\n다시듣기는 무제한"
+            android:tint="#000000" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/favRecyclerView"
         android:layout_weight="1">
 
     </androidx.recyclerview.widget.RecyclerView>
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/myfont"
         android:text="확인"
-        android:id="@+id/toMainBtn"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:backgroundTint="@color/mydarkgray"
+        android:background="@drawable/buttonbackground"
         android:layout_gravity="center"/>
 </LinearLayout>

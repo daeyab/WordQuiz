@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:background="@color/mylightgray"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowAddWordsActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/addedListTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/myfont"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="추가된 단어 목록"
+            android:textColor="@color/mydarkblack"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/addedWordListRecyclerView"
+        android:layout_weight="1">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/myfont"
+        android:text="확인"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:backgroundTint="@color/mydarkgray"
+        android:background="@drawable/buttonbackground"
+        android:id="@+id/ShowToAddBtn"
+        android:layout_gravity="center"/>
+</LinearLayout>

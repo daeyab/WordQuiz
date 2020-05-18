@@ -3,114 +3,162 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/mylightgray"
     android:padding="15dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".QuizActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="WORD QUIZ"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:gravity="center"/>
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/head_logo_2"
+            android:gravity="center"/>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:background="#00000000"
-        android:gravity="center"
-        android:padding="10dp"
-        android:src="@android:drawable/ic_menu_help"
-        android:text="단어 안보고 맞추면 +2
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/goBackMainBtn"
+                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="@color/transparent"
+                android:tint="#000000" />
+
+            <TextView
+                android:id="@+id/inningTxt"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/myfont"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="이닝" />
+
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/quizhelpbtn"
+                android:padding="10dp"
+                android:background="@color/transparent"
+                android:src="@android:drawable/ic_menu_help"
+                android:text="단어 안보고 맞추면 +2
 \n단어를 보고 맞추면 +1
 \n다시듣기는 무제한"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:tint="#F30404" />
+                android:tint="#000000" />
+        </LinearLayout>
 
-
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:rowCount="1">
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="이닝"
-            android:id="@+id/inningTxt"
-            android:layout_row="0"
-            android:layout_column="0"
+            android:text="wrasdsdd"
+            android:id="@+id/quizWord"
+            android:visibility="invisible"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:textStyle="bold"
             android:layout_margin="10dp"
             android:padding="10dp"
             android:gravity="center"/>
 
-        <TextView
-            android:layout_width="60dp"
+
+
+
+        <GridLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="3"
-            android:id="@+id/scoreTxt"
-            android:layout_margin="10dp"
+            android:gravity="center"
             android:layout_gravity="center"
-            android:padding="10dp"
-            android:text="점수\n0점" />
+            android:rowCount="1">
 
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:textStyle="bold"
+                android:fontFamily="@font/myfont"
+                android:id="@+id/scoreTxt"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:text="점수\n0점" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다시 듣기"
+                android:fontFamily="@font/myfont"
+                android:background="@drawable/smallbtnbackground"
+                android:id="@+id/listenAgainBtn"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:background="@drawable/smallbtnbackground"
+                android:text="단어 보기"
+                android:fontFamily="@font/myfont"
+                android:id="@+id/showWordBtn"
+                android:layout_margin="10dp"
+                android:gravity="center"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/btn_star"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:tint="@color/myred"
+                android:background="@color/transparent">
+
+            </ImageButton>
+        </GridLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/wordRecyclerView"
+            android:layout_weight="1">
+        </androidx.recyclerview.widget.RecyclerView>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="다시 듣기"
-            android:id="@+id/listenAgainBtn"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:gravity="center"/>
+            android:fontFamily="@font/myfont"
+            android:text="다음"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:backgroundTint="@color/mydarkgray"
+            android:background="@drawable/buttonbackground"
+            android:enabled="false"
+            android:id="@+id/nextQuizBtn"
+            android:layout_gravity="center"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="2"
-            android:text="단어 보기"
-            android:id="@+id/showWordBtn"
-            android:layout_margin="10dp"
-            android:gravity="center"/>
-    </GridLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="wrd"
-        android:id="@+id/quizWord"
-        android:visibility="gone"
-        android:textColor="#F15221"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:gravity="center"/>
+    </LinearLayout>
+</ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/wordRecyclerView"
-        android:layout_weight="1">
-    </androidx.recyclerview.widget.RecyclerView>
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="다음"
-        android:enabled="false"
-        android:id="@+id/nextQuizBtn"
-        android:layout_gravity="center"/>
 </LinearLayout>

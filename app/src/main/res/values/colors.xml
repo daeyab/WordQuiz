@@ -3,4 +3,14 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="mywhite">#FFFFFF</color>
+    <color name="mylightgray">#EEEEEE</color>
+    <color name="mygray">#D3D3D3</color>
+    <color name="tabgray">#F2F2F2</color>
+    <color name="mydarkgray">#ABABAB</color>
+    <color name="mydarkblack">#666666</color>
+    <color name="myred">#F51E2D</color>
+    <color name="transparent">#00000000</color>
+    <color name="myblue">#0078BE</color>
 </resources>

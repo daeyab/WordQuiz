@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -46,11 +47,13 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
     var totalSocre:Int=0
     var watchedWord=false
     var arr=mutableListOf<Word>()
+    var quizType=true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
-        totalInning=intent.getIntExtra("cnt",0)
+        totalInning=intent.getIntExtra("num",10)
+        quizType=intent.getBooleanExtra("type",true)
         //전달 받음
      //TODO 이거횟수제한
 
@@ -91,6 +94,8 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun setupTTS(){
+       if(!quizType)
+           return
         tts=TextToSpeech(
             this,TextToSpeech.OnInitListener {
                         isTTSready=true
@@ -101,6 +106,7 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun showNext(){
+
         nextQuizBtn.isEnabled=false
         if(nowInning>totalInning){ //전체 문제를 다 봤을 경우
             favWordList.addAll(nowAddWordList)
@@ -108,6 +114,12 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
         }
         else{
             watchedWord=false
+            quizWord.visibility=View.GONE
+
+            if(!quizType){
+                quizWord.visibility=View.VISIBLE
+                watchedWord=true
+            }
             var idx=1
             //문제 5개 출제할 때 2차 중복 체크
             val checkDuplicated= mutableSetOf<String>()
@@ -127,9 +139,8 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
             wordRecyclerView.adapter=adapter //어댑터 부착
             wordIndex+=5 //5개씩 섞어가며 출제
             setupAdapterListener(ansIndex)
-            if(nowInning!=1 && isTTSready)
+            if(nowInning!=1 && isTTSready && quizType)
                 tts.speak(quizWord.text.toString(),TextToSpeech.QUEUE_ADD,null,null)
-            quizWord.visibility=View.GONE
             inningTxt.text="$nowInning/$totalInning"
             nowInning++
 
@@ -187,6 +198,10 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
        when(v?.id){
            R.id.listenAgainBtn->{
+               if(!quizType){
+                   Toast.makeText(this,"음성 지원 모드가 아닙니다.",Toast.LENGTH_SHORT).show()
+                   return
+               }
                if(isTTSready)
                    tts.speak(quizWord.text.toString(),TextToSpeech.QUEUE_ADD,null,null)
            }
@@ -207,7 +222,7 @@ class QuizActivity : AppCompatActivity(),View.OnClickListener {
                 """.trimIndent())
            }
            R.id.goBackMainBtn->{
-               startActivity<MainActivity>()
+               startActivity<LaunchActivity>()
            }
        }
     }

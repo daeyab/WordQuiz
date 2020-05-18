@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/mylightgray"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddWordActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:gravity="center"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="단어 추가"
+            android:textColor="@color/mydarkblack"
+            android:fontFamily="@font/myfont"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:gravity="center"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/myfont"
+            android:textSize="25dp"
+            android:layout_marginBottom="15dp"
+            android:textAlignment="center"
+            android:text="추가할 단어를 입력하세요"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/myfont"
+                android:text="단어"/>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="wrap_content"
+               android:id="@+id/textInputLayout"
+               android:fontFamily="@font/myfont"
+               android:layout_height="wrap_content">
+               <com.google.android.material.textfield.TextInputEditText
+                   android:layout_width="200dp"
+                   android:layout_marginLeft="10dp"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/addWordEngTxt"
+                   android:hint="추가할 단어를 입력하세요"/>
+
+           </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/myfont"
+                android:text="의미"/>
+            <EditText
+                android:layout_width="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/addWordKorTxt"
+                android:hint="추가할 뜻을 입력하세요"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_margin="30dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="취소"
+                android:fontFamily="@font/myfont"
+                android:background="@drawable/smallbtnbackground"
+                android:layout_margin="20dp"
+                android:id="@+id/cancelAddBtn"/>
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="단어 보기"
+                android:fontFamily="@font/myfont"
+                android:background="@drawable/smallbtnbackground"
+                android:layout_margin="20dp"
+                android:id="@+id/showAddBtn"/>
+            <Button
+                android:layout_width="70dp"
+                android:fontFamily="@font/myfont"
+                android:background="@drawable/smallbtnbackground"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="추가"
+                android:enabled="false"
+                android:id="@+id/confirmAddBtn"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

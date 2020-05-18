@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#797979"
+    android:background="@color/transparent"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,26 +11,28 @@
 
 
         <TextView
+            android:fontFamily="@font/myfont"
             android:id="@+id/candidateWords"
             style="@style/Widget.AppCompat.TextView.SpinnerItem"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#AAD17D"
-            android:padding="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonbackground"
+            android:padding="15dp"
+            android:text="TextView"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:text="TextView" />
-
+            android:textStyle="bold" />
 
         <CheckBox
+            android:id="@+id/favCheck"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/favCheck"
-           android:visibility="invisible"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/transparent"
+            android:buttonTint="@color/mydarkgray"
             android:paddingRight="20dp"
-            android:layout_gravity="center"/>
+            android:visibility="invisible" />
     </LinearLayout>
 
 </LinearLayout>

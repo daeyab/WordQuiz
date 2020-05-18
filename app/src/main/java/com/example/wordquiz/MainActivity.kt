@@ -13,13 +13,14 @@ import com.example.wordquiz.WordBook.nowAddWordList
 import com.example.wordquiz.WordBook.wordList
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.row.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MainActivity : AppCompatActivity(),View.OnClickListener {
+class MainActivity : AppCompatActivity(),View.OnClickListener,QuizFragment.callSetingListener {
 //메인 엑티비티
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +32,10 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun init() {
+
         startBtn.setOnClickListener(this)
-        questionCntDownBtn.setOnClickListener(this)
-        questionCntUpBtn.setOnClickListener(this)
+       // questionCntDownBtn.setOnClickListener(this)
+     //   questionCntUpBtn.setOnClickListener(this)
         favBtn.setOnClickListener(this)
         infoBtn.setOnClickListener(this)
         listBtn.setOnClickListener(this)
@@ -104,43 +106,45 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.questionCntDownBtn->{
-                val cnt=questionCntTxt.text.toString().toInt()
-                if((cnt>1) && (cnt<21))
-                    questionCntTxt.text=(cnt-1).toString()
-                else
-                    toast("값 범위 (1~20)")
-            }
-            R.id.questionCntUpBtn->{
-                val cnt=questionCntTxt.text.toString().toInt()
-                if((cnt>0) && (cnt<20))
-                    questionCntTxt.text=(cnt+1).toString()
-                else
-                    toast("값 범위 (1~20)")
+       //     R.id.questionCntDownBtn->{
+           //     val cnt=questionCntTxt.text.toString().toInt()
+          //      if((cnt>1) && (cnt<21))
+             //       questionCntTxt.text=(cnt-1).toString()
+        //        else
+       //             toast("값 범위 (1~20)")
+      //      }
+        //    R.id.questionCntUpBtn->{
+      //          val cnt=questionCntTxt.text.toString().toInt()
+       //         if((cnt>0) && (cnt<20))
+        //            questionCntTxt.text=(cnt+1).toString()
+         //       else
+          //          toast("값 범위 (1~20)")
             }
         //    R.id.questionCntTxt->{ }
-            R.id.infoBtn->{
-                toast("""
-                    건국대학교
-                    공과대학
-                    컴퓨터공학부 
-                    201411194 김대엽
-                    daeyab@naver.com
-                """.trimIndent())
-            }
-            R.id.startBtn->{
-                startActivity<QuizActivity>(
-                    "cnt" to questionCntTxt.text.toString().toInt()
-                )
-            }
-            R.id.favBtn->{
-                startActivity<FavoriteListActivity>()
-            }
-            R.id.listBtn->{
-                val i=Intent(this,ListActivity::class.java)
-                startActivity(i)
-            }
+      //      R.id.infoBtn->{
+     //           toast("""
+       //             건국대학교
+         //           공과대학
+           //         컴퓨터공학부
+             //       201411194 김대엽
+               //     daeyab@naver.com
+              //  """.trimIndent())
+     //       }
+        //    R.id.startBtn->{
+           //     startActivity<QuizActivity>(
+            //        "cnt" to questionCntTxt.text.toString().toInt()
+             //   )
+      //      }
+      //      R.id.favBtn->{
+            //    startActivity<FavoriteListActivity>()
+  //          }
+   //         R.id.listBtn->{
+           //     val i=Intent(this,ListActivity::class.java)
+             //   startActivity(i)
+    //        }
+ //       }
+    }
 
-        }
+    override fun changeQuizInfo(num: Int, type: Boolean) {
     }
 }
